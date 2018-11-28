@@ -1,4 +1,4 @@
-//Copyright © 2017 Teal Dulcet and Brent McManus
+// Copyright © 2017 Teal Dulcet and Brent McManus
 
 #include <iostream>
 #include <cctype>

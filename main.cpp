@@ -1,4 +1,4 @@
-//Copyright © 2017 Teal Dulcet and Brent McManus
+// Copyright © 2017 Teal Dulcet and Brent McManus
 
 #include "tokaido.h"
 
@@ -554,23 +554,23 @@ void outputstate(short numplayers, player *players, short player, short action, 
 	for (int i = 53; i >= 0; --i)
 	{
 		if (board[i] == inn)
-			cout << "\033[1m\033[33mThe inn\t\t";
+			cout << "\e[1m\e[33mThe inn\t\t";
 		else if (board[i] == shop)
-			cout << "\033[7mThe shop\t";
+			cout << "\e[7mThe shop\t";
 		else if (board[i] == shrine)
-			cout << "\033[31mThe shrine\t";
+			cout << "\e[31mThe shrine\t";
 		else if (board[i] == encounter)
-			cout << "\033[35mAn encounter\t";
+			cout << "\e[35mAn encounter\t";
 		else if (board[i] == field)
-			cout << "\033[32mA rice field\t";
+			cout << "\e[32mA rice field\t";
 		else if (board[i] == springs)
-			cout << "\033[36mThe hot springs\t";
+			cout << "\e[36mThe hot springs\t";
 		else if (board[i] == mountain)
-			cout << "\033[37mThe mountain\t";
+			cout << "\e[37mThe mountain\t";
 		else if (board[i] == farm)
-			cout << "\033[33mA farm\t\t";
+			cout << "\e[33mA farm\t\t";
 		else if (board[i] == seaside)
-			cout << "\033[34mThe seaside\t";
+			cout << "\e[34mThe seaside\t";
 
 		if (board[i] == inn)
 			cout << "\u2022 \u2022 \u2022 \u2022";
@@ -579,7 +579,7 @@ void outputstate(short numplayers, player *players, short player, short action, 
 		else
 			cout << "———————";
 
-		cout << " \u2022\033[0m";
+		cout << " \u2022\e[0m";
 
 		for (int j = 0; j < numplayers; ++j)
 		{
@@ -588,7 +588,7 @@ void outputstate(short numplayers, player *players, short player, short action, 
 				if (players[k].locationy == i and players[k].locationx == j)
 				{
 					cout << " — ";
-					wcout << "\U0001F464";
+					cout << "\U0001F464";
 					cout << " Player " << k + 1;
 				}
 			}
@@ -621,36 +621,36 @@ void outputstate(short numplayers, player *players, short player, short action, 
 			else
 			{
 				if (sensors[i] == inn)
-					cout << "\033[1m\033[33mThe inn";
+					cout << "\e[1m\e[33mThe inn";
 				else if (sensors[i] == shop)
-					cout << "\033[7mThe shop";
+					cout << "\e[7mThe shop";
 				else if (sensors[i] == shrine)
-					cout << "\033[31mThe shrine";
+					cout << "\e[31mThe shrine";
 				else if (sensors[i] == encounter)
-					cout << "\033[35mAn encounter";
+					cout << "\e[35mAn encounter";
 				else if (sensors[i] == field)
-					cout << "\033[32mA rice field";
+					cout << "\e[32mA rice field";
 				else if (sensors[i] == springs)
-					cout << "\033[36mThe hot springs";
+					cout << "\e[36mThe hot springs";
 				else if (sensors[i] == mountain)
-					cout << "\033[37mThe mountain";
+					cout << "\e[37mThe mountain";
 				else if (sensors[i] == farm)
-					cout << "\033[33mA farm";
+					cout << "\e[33mA farm";
 				else if (sensors[i] == seaside)
-					cout << "\033[34mThe seaside";
+					cout << "\e[34mThe seaside";
 
-				cout << "\033[0m";
+				cout << "\e[0m";
 			}
 
 			cout << ")\n";
 		}
 
-		cout << "\n\t\t\033[32mA rice field\033[0m:\t" << players[player].field << "\n";
-		cout << "\t\t\033[37mThe mountain\033[0m:\t" << players[player].mountain << "\n";
-		cout << "\t\t\033[34mThe seaside\033[0m:\t" << players[player].seaside << "\n";
+		cout << "\n\t\t\e[32mA rice field\e[0m:\t" << players[player].field << "\n";
+		cout << "\t\t\e[37mThe mountain\e[0m:\t" << players[player].mountain << "\n";
+		cout << "\t\t\e[34mThe seaside\e[0m:\t" << players[player].seaside << "\n";
 		cout << "\t\t";
-		wcout << "\U0001F464";
-		cout << " Coins:\t\t" << players[player].coins << "\n";
+		cout << "\U0001F4B0";
+		cout << " Coins:\t" << players[player].coins << "\n";
 
 		cout << "\n\tAction: moves " << action << " space";
 
@@ -751,13 +751,6 @@ void outfile(const char file[], short numplayers, long double qmatrix[1050][4][5
 
 int main()
 {
-	int i = 0;
-	int j = 0;
-	int k = 0;
-	int l = 0;
-	int ii = 0;
-	int ij = 0;
-
 	char again; //Would you like to start again?
 
 	const int N = 1000000; //Episodes
@@ -769,12 +762,12 @@ int main()
 
 	static long double qmatrix[1050][4][5][6][50][14]; //Q-matrix
 
-	for (i = 0; i < 1050; ++i)
-		for (j = 0; j < 4; ++j)
-			for (k = 0; k < 5; ++k)
-				for (l = 0; l < 6; ++l)
-					for (ii = 0; ii < 50; ++ii)
-						for (ij = 0; ij < 14; ++ij)
+	for (int i = 0; i < 1050; ++i)
+		for (int j = 0; j < 4; ++j)
+			for (int k = 0; k < 5; ++k)
+				for (int l = 0; l < 6; ++l)
+					for (int ii = 0; ii < 50; ++ii)
+						for (int ij = 0; ij < 14; ++ij)
 							qmatrix[i][j][k][l][ii][ij] = 0;
 
 	float e = 1;
@@ -807,25 +800,25 @@ int main()
 
 			float **trainingtotalreward = new float*[numplayers]; //Total reward gained per training episode
 
-			for (i = 0; i < numplayers; ++i)
+			for (int i = 0; i < numplayers; ++i)
 				trainingtotalreward[i] = new float[N];
 
 			//Training
 
-			for (i = 0; i < N; ++i)
+			for (int i = 0; i < N; ++i)
 			{
 				struct player players[numplayers];
 
-				for (j = 0; j < numplayers; ++j)
+				for (int j = 0; j < numplayers; ++j)
 					players[j].locationx = numplayers - j - 1;
 
 				struct meal meals[numplayers + 1][4];
 
-				for (j = 0; j < 4; ++j)
+				for (int j = 0; j < 4; ++j)
 				{
-					for (k = 0; k < (numplayers + 1); ++k)
+					for (int k = 0; k < (numplayers + 1); ++k)
 					{
-						meals[k][j].specialty = mealspecialties[rand() % 25];
+						meals[k][j].specialty = mealspecialties[rand() % 25] - 1;
 						meals[k][j].cost = mealcost[meals[k][j].specialty];
 					}
 				}
@@ -837,7 +830,7 @@ int main()
 
 				int oldstate[numplayers];
 
-				for (j = 0; j < numplayers; ++j)
+				for (int j = 0; j < numplayers; ++j)
 				{
 					oldaction[j] = 1;
 					oldreward[j] = 0;
@@ -883,7 +876,7 @@ int main()
 					{
 						long double max = -LDBL_MAX;
 
-						for (j = 0; j < 14; ++j)
+						for (int j = 0; j < 14; ++j)
 						{
 							if (qmatrix[currentstate][players[player].field][players[player].mountain][players[player].seaside][players[player].coins][j] > max and invalidaction(numplayers, players, player, j + 1) == false)
 							{
@@ -904,7 +897,7 @@ int main()
 					players[player].locationy += action;
 					players[player].locationx = 0;
 
-					for (j = 0; j < numplayers; ++j)
+					for (int j = 0; j < numplayers; ++j)
 						if (j != player and players[j].locationy == players[player].locationy and players[j].locationx >= players[player].locationx)
 							players[player].locationx = players[j].locationx + 1;
 
@@ -921,15 +914,15 @@ int main()
 
 				int areward[numplayers];
 
-				for (j = 0; j < numplayers; ++j)
+				for (int j = 0; j < numplayers; ++j)
 					areward[j] = players[j].totalreward;
 
 				achievement(numplayers, players);
 
-				for (j = 0; j < numplayers; ++j)
+				for (int j = 0; j < numplayers; ++j)
 					qmatrix[oldstate[j]][oldplayers[j].field][oldplayers[j].mountain][oldplayers[j].seaside][oldplayers[j].coins][oldaction[j] - 1] += n * (oldreward[j] + (players[j].totalreward - areward[j]) + (y * 0) - qmatrix[oldstate[j]][oldplayers[j].field][oldplayers[j].mountain][oldplayers[j].seaside][oldplayers[j].coins][oldaction[j] - 1]);
 
-				for (j = 0; j < numplayers; ++j)
+				for (int j = 0; j < numplayers; ++j)
 					trainingtotalreward[j][i] = players[j].totalreward;
 			}
 
@@ -941,7 +934,7 @@ int main()
 
 			fout << "Training:\n";
 
-			for (i = 0; i < numplayers; ++i)
+			for (int i = 0; i < numplayers; ++i)
 			{
 				fout << "Player " << i + 1;
 
@@ -951,9 +944,9 @@ int main()
 					fout << ",";
 			}
 
-			for (j = 0; j < N; ++j)
+			for (int j = 0; j < N; ++j)
 			{
-				for (i = 0; i < numplayers; ++i)
+				for (int i = 0; i < numplayers; ++i)
 				{
 					fout << trainingtotalreward[i][j];
 
@@ -966,6 +959,9 @@ int main()
 
 			fout.close();
 			fout.clear();
+			
+			for (int i = 0; i < numplayers; ++i)
+				delete [] trainingtotalreward[i];
 
 			delete [] trainingtotalreward;
 		}
@@ -974,27 +970,27 @@ int main()
 
 		/*float **testtotalreward = new float*[numplayers]; //Total reward gained per test episode
 
-		for (i = 0; i < numplayers; ++i)
+		for (int i = 0; i < numplayers; ++i)
 			testtotalreward[i] = new float[N];
 		
-		for (i = 0; i < numplayers; ++i)
-			for (j = 0; j < N; ++j)
+		for (int i = 0; i < numplayers; ++i)
+			for (int j = 0; j < N; ++j)
 				testtotalreward[i][j] = 0;*/
 
-		//for(i = 0; i < N; ++i)
+		//for(int i = 0; i < N; ++i)
 		{
 			struct player players[numplayers];
 
-			for (j = 0; j < numplayers; ++j)
+			for (int j = 0; j < numplayers; ++j)
 				players[j].locationx = numplayers - j - 1;
 
 			struct meal meals[numplayers + 1][4];
 
-			for (j = 0; j < 4; ++j)
+			for (int j = 0; j < 4; ++j)
 			{
-				for (k = 0; k < (numplayers + 1); ++k)
+				for (int k = 0; k < (numplayers + 1); ++k)
 				{
-					meals[k][j].specialty = mealspecialties[rand() % 25];
+					meals[k][j].specialty = mealspecialties[rand() % 25] - 1;
 					meals[k][j].cost = mealcost[meals[k][j].specialty];
 				}
 			}
@@ -1021,7 +1017,7 @@ int main()
 				{
 					long double max = -LDBL_MAX;
 
-					for (j = 0; j < 14; ++j)
+					for (int j = 0; j < 14; ++j)
 					{
 						if (qmatrix[currentstate][players[player].field][players[player].mountain][players[player].seaside][players[player].coins][j] > max and invalidaction(numplayers, players, player, j + 1) == false)
 						{
@@ -1052,7 +1048,7 @@ int main()
 				players[player].locationy += action;
 				players[player].locationx = 0;
 
-				for (j = 0; j < numplayers; ++j)
+				for (int j = 0; j < numplayers; ++j)
 					if (j != player and players[j].locationy == players[player].locationy and players[j].locationx >= players[player].locationx)
 						players[player].locationx = players[j].locationx + 1;
 
@@ -1070,13 +1066,13 @@ int main()
 
 			achievement(numplayers, players);
 
-			/*for (j = 0; j < numplayers; ++j)
+			/*for (int j = 0; j < numplayers; ++j)
 				testtotalreward[j][i] = players[j].totalreward;*/
 
 			int maxreward = 0;
 			short winner = 0;
 
-			for (j = 0; j < numplayers; ++j)
+			for (int j = 0; j < numplayers; ++j)
 			{
 				if (players[j].totalreward > maxreward)
 				{
@@ -1087,7 +1083,7 @@ int main()
 
 			short count = 0;
 
-			for (j = 0; j < numplayers; ++j)
+			for (int j = 0; j < numplayers; ++j)
 				if (players[j].totalreward == maxreward)
 					++count;
 
@@ -1095,7 +1091,7 @@ int main()
 			{
 				short maxachievements = 0;
 
-				for (j = 0; j < numplayers; ++j)
+				for (int j = 0; j < numplayers; ++j)
 				{
 					if (players[j].totalreward == maxreward and players[j].achievements > maxachievements)
 					{
@@ -1107,16 +1103,16 @@ int main()
 
 			cout << "\nTotal Reward:\n";
 
-			for (j = 0; j < numplayers; ++j)
+			for (int j = 0; j < numplayers; ++j)
 				cout << "\tPlayer " << j + 1 << ": " << players[j].totalreward << "\n";
 
 			cout << "\nAchievements:\n";
 
-			for (j = 0; j < numplayers; ++j)
+			for (int j = 0; j < numplayers; ++j)
 				cout << "\tPlayer " << j + 1 << ": " << players[j].achievements << "\n";
 
 			if (winner == 0)
-				cout << "\n\033[1mPlayer " << winner + 1 << " (Computer) won!\033[0m";
+				cout << "\n\e[1mPlayer " << winner + 1 << " (Computer) won!\e[0m";
 			else
 				cout << "\nPlayer " << winner + 1 << " won.";
 
@@ -1126,24 +1122,24 @@ int main()
 		/*double testaverage[numplayers]; //Test-Average
 		double teststandarddeviation[numplayers]; //Test-Standard-Deviation
 
-		for (i = 0; i < numplayers; ++i)
+		for (int i = 0; i < numplayers; ++i)
 		{
 			testaverage[i] = 0;
 			teststandarddeviation[i] = 0;
 		}
 		
-		for (i = 0; i < numplayers; ++i)
-			for (j = 0; j < N; ++j)
+		for (int i = 0; i < numplayers; ++i)
+			for (int j = 0; j < N; ++j)
 				testaverage[i] += testtotalreward[i][j];
 		
-		for (i = 0; i < numplayers; ++i)
+		for (int i = 0; i < numplayers; ++i)
 			testaverage[i] /= N;
 		
-		for (i = 0; i < numplayers; ++i)
-			for (j = 0; j < N; ++j)
+		for (int i = 0; i < numplayers; ++i)
+			for (int j = 0; j < N; ++j)
 				teststandarddeviation[i] += pow(testtotalreward[i][j] - testaverage[i], 2);
 		
-		for (i = 0; i < numplayers; ++i)
+		for (int i = 0; i < numplayers; ++i)
 			teststandarddeviation[i] = sqrt(teststandarddeviation[i] / N);
 
 		ofstream fout;
@@ -1151,7 +1147,7 @@ int main()
 		
 		fout << "Test:\n";
 		
-		for (i = 0; i < numplayers; ++i)
+		for (int i = 0; i < numplayers; ++i)
 		{
 			fout << "Player " << i + 1;
 
@@ -1161,9 +1157,9 @@ int main()
 				fout << ",";
 		}
 
-		for (j = 0; j < N; ++j)
+		for (int j = 0; j < N; ++j)
 		{
-			for (i = 0; i < numplayers; ++i)
+			for (int i = 0; i < numplayers; ++i)
 			{
 				fout << testtotalreward[i][j];
 
@@ -1174,7 +1170,7 @@ int main()
 			}
 		}
 		
-		for (i = 0; i < numplayers; ++i)
+		for (int i = 0; i < numplayers; ++i)
 		{
 			fout << "Player " << i + 1 << "\n";
 			
@@ -1185,6 +1181,9 @@ int main()
 
 		fout.close();
 		fout.clear();
+		
+		for (int i = 0; i < numplayers; ++i)
+			delete [] testtotalreward[i];
 
 		delete [] testtotalreward;*/
 
