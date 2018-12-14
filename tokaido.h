@@ -2,12 +2,12 @@
 
 #include <iostream>
 #include <cctype>
-#include <fstream>
-#include <cstring>
-#include <algorithm>
+// #include <fstream>
+// #include <cstring>
+// #include <algorithm>
 #include <climits>
 #include <cfloat>
-#include <cstdlib>
+// #include <cstdlib>
 #include <cmath>
 #include <unistd.h>
 
@@ -37,6 +37,9 @@ const bool twospaces[54] = {false, true, false, false, false, true, true, true, 
 							false, false, false, true, false, true, false, true, false, true, true, false, false, true,
 							false, false, true, false, true, false, true, false, false, true, true, false,
 							false};
+
+const short mealspecialties[25] = {1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 10, 11, 12, 13, 14};
+const short mealcost[14] = {1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3};
 
 struct player
 {
@@ -76,5 +79,3 @@ bool goal(short numplayers, player *players);
 bool invalidaction(short numplayers, player *players, short player, short action);
 void outputstate(short numplayers, player *players, short player, short action, short nextinn);
 void outputreward(short reward, int totalreward);
-bool infile(const char file[], short &numplayers, long double qmatrix[1050][4][5][6][50][14]);
-void outfile(const char file[], short numplayers, long double qmatrix[1050][4][5][6][50][14]);
